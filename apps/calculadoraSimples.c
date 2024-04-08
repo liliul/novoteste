@@ -32,10 +32,14 @@ int main(int argc,  char *argv[]) {
         scanf("%d", &numero1);
 
 
-        printf("Escolher um numero para calcular > 1.+, 2.-, 3.*, 4./\n");
+        printf("Escolher um numero para calcular > 1.+, 2.-, 3.*, 4./ e 5 para sair\n");
 
         int op;
         scanf("%d", &op);
+
+        if(op == 5) {
+            break;
+        }
 
         printf("numero 2\n");
         scanf("%d", &numero2);
@@ -51,7 +55,7 @@ int main(int argc,  char *argv[]) {
             case 4:
                 return printf("Resultado: %d \n", divisao(numero1, numero2));
             default:
-                return printf("Falhou escolher um numero 1 a 5\n");
+                return printf("Falhou escolher um numero 1 a 4\n");
         }
         // int res = mais(numero1, numero2);
 
