@@ -57,13 +57,5 @@ int main(int argc,  char *argv[]) {
             default:
                 return printf("Falhou escolher um numero 1 a 4\n");
         }
-        // int res = mais(numero1, numero2);
-
-        // printf("O Resultado: %d \n", res);
-
-        // break;
     }
-
-    // int n = divisao(4,2);
-    // printf("A somar de mais: %d \n", n);
 }
