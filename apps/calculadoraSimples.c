@@ -33,16 +33,17 @@ int main(int argc,  char *argv[]) {
 
         printf("\nEscolher um numero para calcular > 1.+, 2.-, 3.*, 4./ e 5 para sair\n");
 
+        // op escolher uma da opecoes
         int op;
         scanf("%d", &op);
 
+        // se op for 5 sai do programa
         if(op == 5) {
             break;
         }
 
         printf("Segundo numero 2: ");
         scanf("%d", &numero2);
-
 
         switch (op) {
             case 1:
