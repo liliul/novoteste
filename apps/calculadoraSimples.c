@@ -1,23 +1,7 @@
 #include <cs50.h>
 #include <math.h>
 #include <stdio.h>
-
-int mais(int num1 , int num2) {
-    int somar = (num1 + num2);
-    return somar;
-}
-int menos(int num1, int num2) {
-    int somar = num1 - num2;
-    return somar;
-}
-int multiplicar(int num1, int num2) {
-    int somar = num1 * num2;
-    return somar;
-}
-int divisao(int num1, int num2) {
-    int somar = num1 / num2;
-    return somar;
-}
+#include "./headersH/calculadoraSimples/functionsCalcs.h"
 
 int main(int argc,  char *argv[]) {
     printf("----- Calculadora simples com c -----\n");
