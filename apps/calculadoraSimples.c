@@ -22,17 +22,16 @@ int divisao(int num1, int num2) {
 int main(int argc,  char *argv[]) {
     printf("----- Calculadora simples com c -----\n");
 
-    string sair = "sair";
     int numero1, numero2;
 
     while (true) {
-        printf("Escolher qual calculo vai fazer\n");
+        printf("------------------START------------------\n\n");
 
-        printf("numero 1\n");
+        printf("Primeiro numero 1: ");
         scanf("%d", &numero1);
 
 
-        printf("Escolher um numero para calcular > 1.+, 2.-, 3.*, 4./ e 5 para sair\n");
+        printf("\nEscolher um numero para calcular > 1.+, 2.-, 3.*, 4./ e 5 para sair\n");
 
         int op;
         scanf("%d", &op);
@@ -41,26 +40,28 @@ int main(int argc,  char *argv[]) {
             break;
         }
 
-        printf("numero 2\n");
+        printf("Segundo numero 2: ");
         scanf("%d", &numero2);
 
 
         switch (op) {
             case 1:
-                printf("Resultado: %d \n", mais(numero1, numero2));
+                printf("Resultado: %d \n\n", mais(numero1, numero2));
                 break;
             case 2:
-                printf("Resultado: %d \n", menos(numero1, numero2));
+                printf("Resultado: %d \n\n", menos(numero1, numero2));
                 break;
             case 3:
-                printf("Resultado: %d \n", multiplicar(numero1, numero2));
+                printf("Resultado: %d \n\n", multiplicar(numero1, numero2));
                 break;
             case 4:
-                printf("Resultado: %d \n", divisao(numero1, numero2));
+                printf("Resultado: %d \n\n", divisao(numero1, numero2));
                 break;
             default:
-                printf("Falhou escolher um numero 1 a 4\n");
+                printf("Falhou escolher um numero 1 a 4\n\n");
                 break;
         }
+
+        printf("------------------END-----------------\n\n");
     }
 }
