@@ -1,7 +1,7 @@
 # novoteste
 giti
 
-### Inicando com c
+### Inicando com C com curso cs50.
 1. install library cs50
 ```bash
 1. git clone https://github.com/cs50/libcs50.git
@@ -14,3 +14,16 @@ giti
 
 5. ./hellocs50
 ```
+<hr>
+
+### Criando apps com a linguagem C.
+```bash
+1. cd apps
+
+2. mkdir compiler # na pasta compiler fica o binario do app
+
+3. gcc nomeDoApp.c -o ./compiler/nomeDoApp # sem a extenção .c
+
+4. ./compiler/nomeDoApp # para rodar o app
+```
+A pasta headersH fica os arquivos .h dos apps criados
