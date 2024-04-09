@@ -47,15 +47,20 @@ int main(int argc,  char *argv[]) {
 
         switch (op) {
             case 1:
-                return printf("Resultado: %d \n", mais(numero1, numero2));
+                printf("Resultado: %d \n", mais(numero1, numero2));
+                break;
             case 2:
-                return printf("Resultado: %d \n", menos(numero1, numero2));
+                printf("Resultado: %d \n", menos(numero1, numero2));
+                break;
             case 3:
-                return printf("Resultado: %d \n", multiplicar(numero1, numero2));
+                printf("Resultado: %d \n", multiplicar(numero1, numero2));
+                break;
             case 4:
-                return printf("Resultado: %d \n", divisao(numero1, numero2));
+                printf("Resultado: %d \n", divisao(numero1, numero2));
+                break;
             default:
-                return printf("Falhou escolher um numero 1 a 4\n");
+                printf("Falhou escolher um numero 1 a 4\n");
+                break;
         }
     }
 }
