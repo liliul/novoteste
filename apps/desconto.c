@@ -1,13 +1,32 @@
 #include <stdio.h>
 
+float CalcDesconto(float valorDoProduto, float valorDoDesconto);
+
 int main()
 {
-    float valorDoProduto, valorDoProdutoFinal;
+    float valorDoProduto, valorDoDesconto, valorDoProdutoFinal;
+    char sair[10] = "sair";
+    char sairDoApp[10];
 
-    printf("Informar o valor do produto!\n");
-    scanf("%f", &valorDoProduto);
+    int i = 1;
+    while (i == 1)
+    {
+        printf("\n---------- Calculando Desconto ---------\n");
 
-    valorDoProdutoFinal = valorDoProduto - (valorDoProduto * 0.1);
+        printf("\nInformar o valor do produto!\n");
+        scanf("%f", &valorDoProduto);
 
-    printf("O Valor final do produto é: %.2f\n", valorDoProdutoFinal);
+        printf("\nDesconto em porcentagem ex 0.1 ate 1.0\n");
+        scanf("%f", &valorDoDesconto);
+
+        valorDoProdutoFinal = CalcDesconto(valorDoProduto, valorDoDesconto);
+
+        printf("O Valor final do produto é: %.2f\n", valorDoProdutoFinal);
+    }
+}
+
+float CalcDesconto(float valorDoProduto, float valorDoDesconto)
+{
+
+    return valorDoProduto - (valorDoProduto * valorDoDesconto);
 }
