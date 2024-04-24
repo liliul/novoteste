@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-float CalcDesconto(float valorDoProduto, float valorDoDesconto);
+#include "headersH/desconto/calcDesconto.h"
 
 int main()
 {
@@ -23,10 +22,4 @@ int main()
 
         printf("O Valor final do produto é: %.2f\n", valorDoProdutoFinal);
     }
-}
-
-float CalcDesconto(float valorDoProduto, float valorDoDesconto)
-{
-
-    return valorDoProduto - (valorDoProduto * valorDoDesconto);
 }
