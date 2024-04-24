@@ -3,7 +3,7 @@
 
 int main()
 {
-    float valorDoProduto, valorDoDesconto, valorDoProdutoFinal;
+    float valorDoProduto, valorDoDesconto, valorDoProdutoFinal, desconto;
     char sair[10] = "sair";
     char sairDoApp[10];
 
@@ -20,6 +20,8 @@ int main()
 
         valorDoProdutoFinal = CalcDesconto(valorDoProduto, valorDoDesconto);
 
-        printf("O Valor final do produto é: %.2f\n", valorDoProdutoFinal);
+        desconto = valorDoProduto - valorDoProdutoFinal;
+
+        printf("O Valor final do produto é: %.2f & o Desconto foi de: %.2f\n", valorDoProdutoFinal, desconto);
     }
 }
