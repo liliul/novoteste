@@ -4,8 +4,6 @@
 int main()
 {
     float valorDoProduto, valorDoDesconto, valorDoProdutoFinal, desconto;
-    char sair[10] = "sair";
-    char sairDoApp[10];
 
     int i = 1;
     while (i == 1)
