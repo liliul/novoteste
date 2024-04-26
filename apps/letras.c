@@ -38,6 +38,7 @@ int funcIfElse(int nota)
     }
     else
     {
-        printf("Nenhuma Nota");
+        printf("Nenhuma Nota\n");
     }
+    return 0;
 }
