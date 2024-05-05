@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int notasFor();
+char stringFor();
 
 int main(void)
 {
@@ -15,6 +16,7 @@ int main(void)
     printf("notas[4] = %.1f\n", notas[4]);
 
     notasFor();
+    stringFor();
 }
 
 int notasFor()
@@ -32,5 +34,22 @@ int notasFor()
     for (int i = 0; i < 4; i++)
     {
         printf("nota[%d]: %d\n", i, nota[i]);
+    }
+}
+
+char stringFor()
+{
+    printf("\n\nArray e String\n");
+
+    char str[100];
+
+    printf("Digita a string\n");
+    scanf("%s", str);
+
+    printf("str: %s\n", str);
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("usando for na string [%s], completo [%c]\n", str, str[i]);
     }
 }
