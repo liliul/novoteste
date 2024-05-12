@@ -1,13 +1,15 @@
 #include <stdio.h>
 
-int sum_array_norm(int array[], int size)
+int sum_array_norm(int *array, int size)
 {
     register int i;
     int sum = 0;
+    int *ptr = array;
 
     for (i = 0; i < size; i++)
     {
-        sum += array[i];
+        sum += *ptr;
+        ptr++;
 
     }
 
@@ -21,7 +23,7 @@ int main()
     int size = sizeof(array) / sizeof(array[0]);
     int res  = sum_array_norm(array, size);
 
-    printf("Soma dos elemento sem ponterios: %d\n", res);
+    printf("Soma dos elemento com ponterios: %d\n", res);
 
     return 0; 
 }
