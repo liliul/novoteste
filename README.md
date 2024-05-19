@@ -27,3 +27,10 @@ giti
 4. ./compiler/nomeDoApp # para rodar o app
 ```
 A pasta headersH fica os arquivos .h dos apps criados
+
+<hr>
+
+### Compilar programa em c++ 
+```bash
+1. c++ nomeDoProgrma.cpp -o ./compiler/soNomeDoPrograma
+```
