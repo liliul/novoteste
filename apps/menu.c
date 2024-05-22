@@ -1,10 +1,13 @@
+// #include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
 #include <string.h>
+#include <time.h>
 
 void menuPrincipal();
 void Preencher();
+int NumeroCartela(int numero1);
 
 int main()
 {
@@ -66,4 +69,20 @@ void Preencher()
     printf("\nCadastro feito com Sucesso!\n");
     delay_output(3000);
 
+    int numero1;
+    NumeroCartela(numero1);
+}
+
+int NumeroCartela(int numero1)
+{
+    printf("\n\n");
+    srand((unsigned)time(NULL));
+    numero1 = rand() % 999999;
+    printf("\n\nPor favor a note o Registro do Jogador\n\n");
+    delay_output(2000);
+    printf("\n\nNumero da Cartela: %d\n", numero1);
+    delay_output(5000);
+    cadastro.codigoCartela = numero1;
+
+    return numero1;
 }
