@@ -11,6 +11,7 @@ void menuPrincipal();
 void Preencher();
 int NumeroCartela(int numero1);
 void CriarDiretorio();
+void GravarArquivo();
 
 int main()
 {
@@ -76,6 +77,7 @@ void Preencher()
     NumeroCartela(numero1);
 
     CriarDiretorio();
+    GravarArquivo();
 }
 
 int NumeroCartela(int numero1)
@@ -109,8 +111,36 @@ void CriarDiretorio()
     }
     else
     {
-        printf("\nDiretorio nao Existe");
+        printf("\nDiretorio ja Existe\n");
     }
 
     napms(2000);
+}
+
+void GravarArquivo()
+{
+    FILE *arquivo;
+
+    arquivo = fopen("DATABASE/dados.txt", "w");
+
+    if(arquivo == NULL)
+    {
+        exit(1);
+    }
+    else
+    {
+        fprintf(arquivo, "Codigo: ");
+        fprintf(arquivo, "%d", cadastro.codigoCartela);
+        fprintf(arquivo, "Nome: ");
+        fprintf(arquivo, cadastro.nomeCompleto);
+        fprintf(arquivo, "Email: ");
+        fprintf(arquivo, cadastro.email);
+        fprintf(arquivo, "\n");
+
+        printf("\nArquivo Criado com Sucesso\n\n");
+        fclose(arquivo);
+
+        napms(2000);
+    }
+
 }
