@@ -5,10 +5,12 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 void menuPrincipal();
 void Preencher();
 int NumeroCartela(int numero1);
+void CriarDiretorio();
 
 int main()
 {
@@ -72,6 +74,8 @@ void Preencher()
 
     int numero1;
     NumeroCartela(numero1);
+
+    CriarDiretorio();
 }
 
 int NumeroCartela(int numero1)
@@ -86,4 +90,27 @@ int NumeroCartela(int numero1)
     cadastro.codigoCartela = numero1;
 
     return numero1;
+}
+
+void CriarDiretorio()
+{
+    int diretorio[1];
+
+    clear();
+
+    printf("\nCriando seu Diretorio DATABASE!\n\n");
+    napms(2000);
+
+    diretorio[0] = mkdir("DATABASE", 0777);
+
+    if(diretorio[0] != -1)
+    {
+        printf("\nDiretorio Criado com Sucesso!\n");
+    }
+    else
+    {
+        printf("\nDiretorio nao Existe");
+    }
+
+    napms(2000);
 }
