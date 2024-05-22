@@ -1,9 +1,10 @@
-// #include <curses.h>
+#include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 void menuPrincipal();
 void Preencher();
@@ -21,9 +22,9 @@ int main()
 
         switch (menu) {
             // case 1: clear();printf("\n\nEntrei no Menu Cadastrar\n\n");delay_output(2000);break;
-            case 1: clear();Preencher();delay_output(2000);break;
-            case 2: clear();printf("\n\nEntrei no Menu do Jogo\n\n");delay_output(2000);break;
-            case 3: clear();printf("\n\nSaindo do Jogo\n\n");delay_output(5000);break;
+            case 1: clear();Preencher();napms(1500);break;
+            case 2: clear();printf("\n\nEntrei no Menu do Jogo\n\n");napms(1500);break;
+            case 3: clear();printf("\n\nSaindo do Jogo\n\n");napms(1000);break;
         }
 
     }while (menu != 3);
@@ -67,7 +68,7 @@ void Preencher()
     fgets(cadastro.email, 101, stdin);
 
     printf("\nCadastro feito com Sucesso!\n");
-    delay_output(3000);
+    napms(2000);
 
     int numero1;
     NumeroCartela(numero1);
@@ -79,9 +80,9 @@ int NumeroCartela(int numero1)
     srand((unsigned)time(NULL));
     numero1 = rand() % 999999;
     printf("\n\nPor favor a note o Registro do Jogador\n\n");
-    delay_output(2000);
+    napms(1000);
     printf("\n\nNumero da Cartela: %d\n", numero1);
-    delay_output(5000);
+    napms(5000);
     cadastro.codigoCartela = numero1;
 
     return numero1;
