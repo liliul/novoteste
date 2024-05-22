@@ -34,3 +34,9 @@ A pasta headersH fica os arquivos .h dos apps criados
 ```bash
 1. c++ nomeDoProgrma.cpp -o ./compiler/soNomeDoPrograma
 ```
+<hr>
+
+### Compilar biblioteca ncurses.h
+```bash
+1. gcc your_program.c -lncurses -o your_program
+```
