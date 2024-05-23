@@ -6,6 +6,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <locale.h>
 
 void menuPrincipal();
 void Preencher();
@@ -15,6 +16,8 @@ void GravarArquivo();
 
 int main()
 {
+    setlocale(LC_ALL, "Portuguese");
+
     int menu = 0;
 
     do {
@@ -121,7 +124,7 @@ void GravarArquivo()
 {
     FILE *arquivo;
 
-    arquivo = fopen("DATABASE/dados.txt", "w");
+    arquivo = fopen("DATABASE/dados.txt", "a");
 
     if(arquivo == NULL)
     {
@@ -129,13 +132,23 @@ void GravarArquivo()
     }
     else
     {
+        if (access("DATABASE/dados.txt", W_OK))
+        {
+            printf("arquivo dados.txt nao existe\n");
+            exit(1);
+        }
+
         fprintf(arquivo, "Codigo: ");
         fprintf(arquivo, "%d", cadastro.codigoCartela);
         fprintf(arquivo, "Nome: ");
-        fprintf(arquivo, cadastro.nomeCompleto);
+        fprintf(arquivo, "%s", cadastro.nomeCompleto);
         fprintf(arquivo, "Email: ");
-        fprintf(arquivo, cadastro.email);
+        fprintf(arquivo, "%s", cadastro.email);
         fprintf(arquivo, "\n");
+        //
+        // printf("\nArquivo Criado com Sucesso\n\n");
+
+        // fprintf(arquivo, "Codigo: %d\nNome: %99s\nEmail: %99s\n", cadastro.codigoCartela, cadastro.nomeCompleto, cadastro.email);
 
         printf("\nArquivo Criado com Sucesso\n\n");
         fclose(arquivo);
