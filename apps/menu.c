@@ -8,7 +8,8 @@
 #include <sys/stat.h>
 #include <locale.h>
 
-void menuPrincipal();
+#include "headersH/menu/menuPrincipal.h"
+
 void Preencher();
 int NumeroCartela(int numero1);
 void CriarDiretorio();
@@ -36,14 +37,6 @@ int main()
     }while (menu != 3);
 
     return 0;
-}
-
-void menuPrincipal()
-{
-    printf("\n\nJogo da Sorte.\n\n");
-    printf("\n\n1 - Cadrastre o Jogador:\n\n");
-    printf("\n\n2 - Entrar no Jogo da Sorte:\n\n");
-    printf("\n\n3 - Sair do Jogo:\n\n");
 }
 
 typedef struct CADASTRO
