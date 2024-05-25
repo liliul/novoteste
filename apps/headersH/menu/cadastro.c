@@ -28,17 +28,22 @@ void Preencher()
     clear();
     printf("\n\nCadastre seu Jogodor\n\n");
 
-    //cadastro
-    printf("Cadaster seu Nome Completo\n");
-    fflush(stdin);
-    scanf("%99s" , cadastro.nomeCompleto);
-    fgets(cadastro.nomeCompleto, 101, stdin);
+    //nomeCompleto
+    printf("Cadastrar seu Nome\n");
+    // fflush(stdin);
+    scanf("%s" , cadastro.nomeCompleto);
+
+    // fgets(cadastro.nomeCompleto, 101, stdin);
+    // strtok(cadastro.nomeCompleto, "\n");
 
     // email
-    printf("Cadaster seu Email\n");
-    fflush(stdin);
-    scanf("%99s" , cadastro.email);
-    fgets(cadastro.email, 101, stdin);
+    printf("Cadastrar seu Email\n");
+    // fflush(stdin);
+    scanf("%s" , cadastro.email);
+    // fgets(cadastro.email, 101, stdin);
+    // strtok(cadastro.email, "\n");
+
+    // printf("add: %s::%s", cadastro.nomeCompleto, cadastro.email);
 
     printf("\nCadastro feito com Sucesso!\n");
     napms(2000);
@@ -48,6 +53,7 @@ void Preencher()
 
     CriarDiretorio();
     GravarArquivo();
+
 }
 
 int NumeroCartela(int numero1)
@@ -124,3 +130,4 @@ void GravarArquivo()
     }
 
 }
+
