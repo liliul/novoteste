@@ -27,7 +27,7 @@ int main()
         switch (menu) {
             // case 1: clear();printf("\n\nEntrei no Menu Cadastrar\n\n");delay_output(2000);break;
             case 1: clear();Preencher();napms(1500);break;
-            case 2: clear();printf("\n\nEntrei no Menu do Jogo\n\n");napms(1500);break;
+            case 2: clear();MenuJogoDaSorte();break;
             case 3: clear();printf("\n\nSaindo do Jogo\n\n");napms(1000);break;
         }
 
