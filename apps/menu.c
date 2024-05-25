@@ -8,7 +8,7 @@
 #include <sys/stat.h>
 #include <locale.h>
 
-#include "headersH/menu/menuPrincipal.h"
+#include "headersH/menu/menuGame.h"
 
 #include "headersH/menu/cadastro.h"
 

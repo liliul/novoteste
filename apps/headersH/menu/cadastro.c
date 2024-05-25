@@ -114,9 +114,9 @@ void GravarArquivo()
 
         fprintf(arquivo, "Codigo: ");
         fprintf(arquivo, "%d", cadastro.codigoCartela);
-        fprintf(arquivo, "Nome: ");
+        fprintf(arquivo, "\nNome: ");
         fprintf(arquivo, "%s", cadastro.nomeCompleto);
-        fprintf(arquivo, "Email: ");
+        fprintf(arquivo, "\nEmail: ");
         fprintf(arquivo, "%s", cadastro.email);
         fprintf(arquivo, "\n");
         //
