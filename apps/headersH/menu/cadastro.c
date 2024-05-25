@@ -12,6 +12,7 @@ void Preencher();
 int NumeroCartela(int numero1);
 void CriarDiretorio();
 void GravarArquivo();
+void LerArquivo();
 
 typedef struct CADASTRO
 {
@@ -53,7 +54,7 @@ void Preencher()
 
     CriarDiretorio();
     GravarArquivo();
-
+    LerArquivo();
 }
 
 int NumeroCartela(int numero1)
@@ -131,3 +132,32 @@ void GravarArquivo()
 
 }
 
+void LerArquivo()
+{
+    FILE *arquivo;
+    char palavras[1000];
+
+    arquivo = fopen("DATABASE/dados.txt", "r");
+
+    if (arquivo == NULL)
+    {
+        printf("Não foi possivel abrir o arquivo\n");
+        napms(2000);
+        exit(0);
+    }
+
+    fflush(stdin);
+
+    // fscanf(arquivo, "%i %s %s", &cadastro.codigoCartela, &cadastro.nomeCompleto, &cadastro.email);
+    // printf("Codigo: %i\nNome Completo: %s\nEmail: %s\n", cadastro.codigoCartela, cadastro.nomeCompleto, cadastro.email);
+
+    while (fgets(palavras, 1000,arquivo ) != NULL)
+    {
+        printf("%s", palavras);
+    }
+
+    fflush(stdout);
+    fclose(arquivo);
+    napms(5000);
+
+}
