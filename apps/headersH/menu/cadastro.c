@@ -22,7 +22,6 @@ typedef struct CADASTRO
 
 } CADASTRO;
 struct CADASTRO cadastro = {0 , "", ""};
-// struct CADASTRO cadastro;
 
 void Preencher()
 {
@@ -31,20 +30,11 @@ void Preencher()
 
     //nomeCompleto
     printf("Cadastrar seu Nome\n");
-    // fflush(stdin);
     scanf("%s" , cadastro.nomeCompleto);
-
-    // fgets(cadastro.nomeCompleto, 101, stdin);
-    // strtok(cadastro.nomeCompleto, "\n");
 
     // email
     printf("Cadastrar seu Email\n");
-    // fflush(stdin);
     scanf("%s" , cadastro.email);
-    // fgets(cadastro.email, 101, stdin);
-    // strtok(cadastro.email, "\n");
-
-    // printf("add: %s::%s", cadastro.nomeCompleto, cadastro.email);
 
     printf("\nCadastro feito com Sucesso!\n");
     napms(2000);
@@ -119,10 +109,6 @@ void GravarArquivo()
         fprintf(arquivo, "\nEmail: ");
         fprintf(arquivo, "%s", cadastro.email);
         fprintf(arquivo, "\n");
-        //
-        // printf("\nArquivo Criado com Sucesso\n\n");
-
-        // fprintf(arquivo, "Codigo: %d\nNome: %99s\nEmail: %99s\n", cadastro.codigoCartela, cadastro.nomeCompleto, cadastro.email);
 
         printf("\nArquivo Criado com Sucesso\n\n");
         fclose(arquivo);
@@ -147,9 +133,6 @@ void LerArquivo()
     }
 
     fflush(stdin);
-
-    // fscanf(arquivo, "%i %s %s", &cadastro.codigoCartela, &cadastro.nomeCompleto, &cadastro.email);
-    // printf("Codigo: %i\nNome Completo: %s\nEmail: %s\n", cadastro.codigoCartela, cadastro.nomeCompleto, cadastro.email);
 
     while (fgets(palavras, 1000,arquivo ) != NULL)
     {
