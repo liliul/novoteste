@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <locale.h>
 
+#include "estrutura.h"
 
 void menuPrincipal()
 {
@@ -27,7 +28,7 @@ void MenuJogoDaSorte()
     printf("[6]    para sair\n\n");
     scanf("%i", &menuOpcao);
 
-    if (menuOpcao == 1)
+    if (menuOpcao == 0)
     {
         clear();
 
@@ -36,7 +37,7 @@ void MenuJogoDaSorte()
         clear();
         printf("Seja bem vindo ao NarutoSorte");
 
-        // InserirNumerosDigitadosNoNarutoSorte();
+        InserirNumerosDigitadosNoNarutoSorte();
 
         napms(2000);
 
