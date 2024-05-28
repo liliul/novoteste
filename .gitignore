@@ -2,3 +2,4 @@ apps/compiler/*
 c/compiler/*
 linguagemC/compiler/*
 c++/compiler/*
+apps/DATABASE/*
