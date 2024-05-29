@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ncurses.h>
 
 typedef struct Naruto_Sorte
 {
@@ -26,13 +27,13 @@ void InserirNumerosDigitadosNoNarutoSorte()
             {
                 if (narutoSorte.numeroDigitados[cont] == narutoSorte.numeroDigitados[i] || narutoSorte.numeroDigitados[i] < 1 || narutoSorte.numeroDigitados[i] > 60)
                 {
-                    clear();
+                    system("clear");
                     printf("Numero ja existe\n\n");
                     napms(2000);
                     printf("\n\nDigitar 30 numeros de 1 a 60 para concorrer a premios\n\n");
                     printf("\n\nDigitar o numero novamente %i: ", i + 1);
                     scanf("%d", &narutoSorte.numeroDigitados[i]);
-                    clear();
+                    system("clear");
                 }
 
             } while (narutoSorte.numeroDigitados[i] < 1 || narutoSorte.numeroDigitados[i] > 60 || narutoSorte.numeroDigitados[cont] == narutoSorte.numeroDigitados[i]);
@@ -77,4 +78,55 @@ void InserirNumerosDigitadosNoNarutoSorte()
     }
     printf("\n\nO narutoSorte esta conferindo a cartela\n\n");
     napms(2000);
+}
+
+void MostrarNumerosDigitadosNoNarutoSorte()
+{
+    int l = 0, k = 0, j = 0, x = 0, aux = 0, acertos = -1;
+
+    printf("\n\nNumeros marcados na cartela virtual\n\n");
+
+    for (l = 0; l < 30; l++)
+    {
+        printf("[%d\n", narutoSorte.numeroDigitados[l]);
+        printf("]");
+
+        // fflush(stdout);
+    }
+
+    napms(2000);
+    printf("\n\nAnalisando os numeros digitados\n\n");
+    napms(2000);
+    printf("\n\nSaindo os numeros sorteados da cartela: \n\n");
+    napms(2000);
+
+    srand(time(NULL));
+
+    for (l = 0; l < 30; l++)
+    {
+        narutoSorte.numeroSorteados1[l] = 0;
+    }
+
+    for (j = 0; j < 30; j++)
+    {
+        narutoSorte.numeroSorteados2[j] = rand() % 60;
+        x = narutoSorte.numeroSorteados2[j];
+
+        if (narutoSorte.numeroSorteados1[x] == 1)
+        {
+            for (k = 0; k < 30; k++)
+            {
+                if (narutoSorte.numeroSorteados1[k] == 0)
+                {
+                    narutoSorte.numeroSorteados2[j] = k;
+                    x = k;
+                    break;
+                }
+            }
+        }
+
+        narutoSorte.numeroSorteados1[x] = 1;
+    }
+
+    printf("\n\n\t\t\tNumeros sorteados\n\n");
 }

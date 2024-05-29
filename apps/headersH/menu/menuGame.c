@@ -41,6 +41,6 @@ void MenuJogoDaSorte()
 
         napms(2000);
 
-        // MostrarNumerosDigitadosNoNarutoSorte();
+        MostrarNumerosDigitadosNoNarutoSorte();
     }
 }
