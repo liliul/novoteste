@@ -129,4 +129,63 @@ void MostrarNumerosDigitadosNoNarutoSorte()
     }
 
     printf("\n\n\t\t\tNumeros sorteados\n\n");
+
+    for (k = 0; k <= 28; k++)
+    {
+        for (l = k; l <= 29; l++)
+        {
+            if (narutoSorte.numeroSorteados2[k] > narutoSorte.numeroSorteados2[l])
+            {
+                aux = narutoSorte.numeroSorteados2[k];
+                narutoSorte.numeroSorteados2[k] = narutoSorte.numeroSorteados2[l];
+                narutoSorte.numeroSorteados2[l] = aux;
+            }
+        }
+    }
+
+    for (j = 0; j < 30; j++)
+    {
+        if (narutoSorte.numeroSorteados2[j] == 0)
+        {
+            narutoSorte.numeroSorteados2[j] = 1;
+        }
+        else
+        {
+            printf("[ %d ]\n ", narutoSorte.numeroSorteados2[j]);
+        }
+    }
+
+    printf("\n\n\nResultado Final\n\n\n");
+    acertos = 0;
+
+    for (l = 0; l < 30; l++)
+    {
+        for (j = 0; j < 30; j++)
+        {
+            narutoSorte.n1[l] = narutoSorte.numeroDigitados[l];
+            narutoSorte.n2[j] = narutoSorte.numeroDigitados[j];
+
+            if (narutoSorte.n1[l] == narutoSorte.n2[j])
+            {
+                if (acertos < 0)
+                {
+                    acertos = 0;
+                }
+                acertos++;
+            }
+        }
+    }
+
+    if (acertos == 20)
+    {
+        printf("\n\n\nVocê ganhou o jogo da sorte Parabens\n\n\n");
+    }
+    else
+    {
+        printf("\n\n\nVocê perdeu tudo\n\n\n");
+    }
+
+    printf("Acertos: %d", acertos);
+    printf("\n\n\n\n");
+    napms(3000);
 }
