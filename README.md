@@ -40,3 +40,13 @@ A pasta headersH fica os arquivos .h dos apps criados
 ```bash
 1. gcc your_program.c -lncurses -o your_program
 ```
+
+### Golang
+rodar arquivo go
+```bash
+1. go run nomeDoArquivo.go
+
+2. go build nomeDoArquivo.go
+
+3. ./nomeDaBuild
+```
