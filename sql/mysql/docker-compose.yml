@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  mysql-curso:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_REMOTE: "yes"
+      MYSQL_USER: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
