@@ -3,3 +3,4 @@ c/compiler/*
 linguagemC/compiler/*
 c++/compiler/*
 apps/DATABASE/*
+go/go_teste/bin/*
