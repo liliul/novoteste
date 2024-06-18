@@ -1,3 +1,29 @@
+Configurando o mysql
+```bash
+create database cadastro
+default character set utf8
+default collate utf8_general_ci;
+
+# use database cadastro;
+
+create table pessoas (
+id int not null auto_increment,
+nome varchar(30) not null,
+nascimento date,
+sexo enum('M', 'F'),
+peso decimal(5,2),
+altura decimal(3,2),
+nacionalidade varchar(20) default 'Brasil',
+primary key (id)
+) default charset = utf8;
+
+INSERT INTO cadastro.pessoas
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+VALUES(default, 'narutoUzumaki', '1990-06-08', 'M', 50.33, 1.65, 'Japao');
+
+# SELECT * from pessoas;
+```
+
 Criando database
 
 ```bash
@@ -14,7 +40,13 @@ Criando database
 ```
 Comandos do sql
 ```bash
-1. use nomeDaDatabase;
+show databases;
 
-2. DROP DATABASE nomeDaDatabase;
+use nomeDaDatabase;
+
+show tables;
+
+select * from nomeDaTabela;
+
+DROP DATABASE nomeDaDatabase;
 ```
