@@ -22,6 +22,20 @@ INSERT INTO cadastro.pessoas
 VALUES(default, 'narutoUzumaki', '1990-06-08', 'M', 50.33, 1.65, 'Japao');
 
 # SELECT * from pessoas;
+
+alter table cadastro.pessoas
+add column profissao varchar(10);
+ou
+add column profissao varchar(10) after nome; # colocar depois do nome
+ou
+add column profissao varchar(10) int first; # colocar em primeiro
+ou
+drop column profissao; # para excluir da coluna
+ou
+modify column profissao varchar(20) not null default ''; # modifica a coluna
+ou
+change column profissao prof varchar(20) not null default ''; # moda o nome da coluna
+
 ```
 
 Criando database
