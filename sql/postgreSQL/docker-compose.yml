@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  postgres:
+    image:  postgresql
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=cursosql
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=sqlcurso
+
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  pg-data:
