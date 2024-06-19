@@ -64,3 +64,27 @@ select * from nomeDaTabela;
 
 DROP DATABASE nomeDaDatabase;
 ```
+
+Pesquisando no banco de dados mysql
+```bash
+select * from pessoas;
+
+select nome, altura from pessoas;
+
+select nome, altura from pessoas order by altura desc;
+ou
+select nome, altura from pessoas order by altura asc;
+
+select * from pessoas where nome = 'narutoUzumaki';
+
+select * from pessoas where peso >= 80;
+
+select * from pessoas where peso <= 80;
+
+select * from pessoas where peso != 80;
+
+select * from pessoas where nacionalidade != 'Brasil';
+
+select * from pessoas where nacionalidade != 'Brasil' or peso > 80;
+
+```
