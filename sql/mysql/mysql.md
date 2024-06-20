@@ -106,3 +106,22 @@ select * from pessoas where nacionalidade != 'Brasil';
 select * from pessoas where nacionalidade != 'Brasil' or peso > 80;
 
 ```
+
+Comandos update;
+```bash
+update cursos set nome='nodeJS' where idcurso='3'; # atualizando um item
+
+update cursos set nome='nodeJS', descricao='curso de nodejs para backend com javascript.' where idcurso='3'; # atualizando dois item
+
+update cursos set nome='nodeJS', descricao='curso de nodejs para backend com javascript.' where idcurso='3' limit 1; # update limitado a 1
+
+```
+
+Comandos delete;
+```bash
+delete from cursos where idcurso='6';
+
+delete from cursos where ano='2023' limit 3; # excluir 3 vezes o ano 2023
+
+truncate table cursos; # excluir todos os dados da tabela cursos
+```
