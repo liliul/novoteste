@@ -36,10 +36,11 @@ modify column profissao varchar(20) not null default ''; # modifica a coluna
 ou
 change column profissao prof varchar(20) not null default ''; # moda o nome da coluna
 
+# renomear uma Tabela
+alter table pessoas rename to clientes;
 ```
 
-Criando database
-
+Criando database e tables
 ```bash
 1. CREATE DATABASE cadastro;
 
@@ -51,7 +52,17 @@ Criando database
     altura float,
     nacionalidade varchar(20)
 );
+
+# so criar a tabela se ela nao existir
+create table if not exists cursos (
+nome varchar(30) not null unique,
+descricao text,
+carga int unsigned,
+totaulas int unsigned,
+ano year default '2024'
+) default charset=utf8;
 ```
+
 Comandos do sql
 ```bash
 show databases;
@@ -63,6 +74,8 @@ show tables;
 select * from nomeDaTabela;
 
 DROP DATABASE nomeDaDatabase;
+
+describe nomeDaTabela;
 ```
 
 Pesquisando no banco de dados mysql
