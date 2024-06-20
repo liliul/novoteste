@@ -38,6 +38,9 @@ change column profissao prof varchar(20) not null default ''; # moda o nome da c
 
 # renomear uma Tabela
 alter table pessoas rename to clientes;
+
+# add primary key
+alter table cursos add primary key(nomeDoIdDaColuna);
 ```
 
 Criando database e tables
@@ -76,6 +79,8 @@ select * from nomeDaTabela;
 DROP DATABASE nomeDaDatabase;
 
 describe nomeDaTabela;
+
+drop table if exists nomeDaTabela; # so excluir se a Tabela existir
 ```
 
 Pesquisando no banco de dados mysql
