@@ -81,6 +81,10 @@ DROP DATABASE nomeDaDatabase;
 describe nomeDaTabela;
 
 drop table if exists nomeDaTabela; # so excluir se a Tabela existir
+
+show create table amigos; # para ver sql
+
+status # para ver informações que banco esta sendo usado
 ```
 
 Pesquisando no banco de dados mysql
@@ -125,3 +129,15 @@ delete from cursos where ano='2023' limit 3; # excluir 3 vezes o ano 2023
 
 truncate table cursos; # excluir todos os dados da tabela cursos
 ```
+
+Como fazer dump do mysql no phpmyadmin
+1. clica no icone principal ou icone da casa
+2. exportar
+3. personalizada
+4. escolhe o banco de dados
+5. clica em exportar
+
+Como importar arquivo sql no phpmyadmin
+1. clica em importar
+2. escolhe o arquivo sql
+3. clica em importar
