@@ -206,6 +206,43 @@ delete from cursos where ano='2023' limit 3; # excluir 3 vezes o ano 2023
 truncate table cursos; # excluir todos os dados da tabela cursos
 ```
 
+
+Relacional comandos mysql
+```bash
+alter table pessoas add column cursopreferido int;
+
+alter table pessoas add foreign key (cursopreferido) references cursos(idcurso);
+
+update pessoas set cursopreferido = '4' where id = '10'; # idDoCurso e idDaPessoas
+
+select pessoas.nome, pessoas.cursopreferido, cursos.nome, cursos.ano from pessoas join cursos on cursos.idcurso = pessoas.cursopreferido;
+
+select pessoas.nome, cursos.nome, cursos.ano from pessoas inner join cursos on cursos.idcurso = pessoas.cursopreferido order by pessoas.nome;
+
+select pessoas.nome, cursos.nome, cursos.ano from pessoas left outer join cursos on cursos.idcurso = pessoas.cursopreferido; # tras todos os nome com cursos e sem curso e tras so os cursos que as pessoas estao fazendo
+
+select pessoas.nome, cursos.nome, cursos.ano from pessoas right outer join cursos on cursos.idcurso = pessoas.cursopreferido; # tras so os nomes que tem curso e tras todos os cursos
+
+# criando novo tabela
+create table pessoas_assiste_curso( id int not null auto_increment, data date, idpessoas int, idcur int, primary key (id), foreign key (idpessoas) references pessoas(id), foreign key (idcur) references cursos(idcurso) ) default charset=utf8;
+
+# adicionando na tabela pessoas_assiste_curso
+insert into pessoas_assiste_curso values ( default, '2022-05-15', '5', '2');
+
+select * from pessoas_assiste_curso;
+
+select * from pessoas p join pessoas_assiste_curso a on p.id = a.idpessoas;
+
+select p.nome, a.idcur from pessoas p join pessoas_assiste_curso a on p.id = a.idpessoas join cursos c on c.idcurso = a.idcur order by p.nome;
+
+select p.nome, c.nome from pessoas p join pessoas_assiste_curso a on p.id = a.idpessoas join cursos c on c.idcurso = a.idcur order by p.nome; # puchando dados de tres tabelas
+
+select p.nome, c.nome, c.descricao from pessoas p join pessoas_assiste_curso a on p.id = a.idpessoas join cursos c on c.idcurso = a.idcur order by p.nome;
+
+
+```
+
+
 Como fazer dump do mysql no phpmyadmin
 1. clica no icone principal ou icone da casa
 2. exportar
