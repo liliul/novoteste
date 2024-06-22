@@ -66,6 +66,33 @@ ano year default '2024'
 ) default charset=utf8;
 ```
 
+Insert into;
+```bash
+INSERT INTO cadastro.pessoas
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+VALUES(default, 'Kakashi', '1980-06-08', 'M', 80.33, 1.83, 'Japao'),
+(default, 'Sakura haruno', '1990-08-18', 'F', 45.00, 1.66, 'Japao'),
+(default, 'Madara Uchiha', '1955-11-05', 'M', 105.53, 1.89, 'Japao'),
+(default, 'Kaka', '1986-10-18', 'M', 86.45, 1.85, 'Brasil'),
+(default, 'Piccolo', '1975-05-15', 'M', 120.13, 1.93, 'nameykusei'),
+(default, 'Itachi Uchiha', '1988-05-05', 'M', 80.33, 1.79, 'Japao'),
+(default, 'Bulma', '1989-10-04', 'F', 49.50, 1.68, 'Terra'),
+(default, 'Vegeta', '1986-03-11', 'M', 89.10, 1.79, 'Sayajins'),
+(default, 'Goku', '1986-04-08', 'M', 90.33, 1.81, 'Terra');
+
+
+# tabela curso
+insert into cursos (idcurso,nome,descricao,carga,totaulas,ano) values
+('7', 'elixir','curso de elexir para beckend',200, 90, '2021'),
+('8', 'clang','curso de clang para beckend',350, 115, '2022'),
+('9', 'c++','curso de c++ para beckend',340, 110, '2022'),
+('10', 'reactjs','curso de reactjs para web',110, 51, '2023'),
+('11', 'nextjs','curso de nextjs para web',150, 69, '2024'),
+('12', 'linux','curso de linux para servidores',450, 201, '2022'),
+('13', 'typescript','curso de typescript para web',90, 41, '2023'),
+('14', 'Gdscript','curso de godot para games',40, 15, '2020');
+```
+
 Comandos do sql
 ```bash
 show databases;
@@ -91,6 +118,8 @@ Pesquisando no banco de dados mysql
 ```bash
 select * from pessoas;
 
+select * from pessoas order by nome; # Pesquisa pela coluna
+
 select nome, altura from pessoas;
 
 select nome, altura from pessoas order by altura desc;
@@ -108,6 +137,53 @@ select * from pessoas where peso != 80;
 select * from pessoas where nacionalidade != 'Brasil';
 
 select * from pessoas where nacionalidade != 'Brasil' or peso > 80;
+
+select ano,nome from cursos where ano between 2020 and 2022; # Pesquisa de 2020 ate 2022
+
+select ano,nome from cursos where ano between 2020 and 2022 order by ano desc, nome asc;
+
+select ano,nome,descricao from cursos where ano in (2018, 2020, 2022, 2025) order by ano;
+
+select ano,nome,totaulas from cursos where carga > 35 and totaulas < 140;
+
+select ano,nome,totaulas from cursos where carga > 35 or totaulas < 140;
+
+select * from cursos where nome like 'c%';
+
+select * from cursos where nome like '%s';
+
+select * from cursos where nome like '%a%';
+
+select * from cursos where nome not like '%a%';
+
+select * from cursos where nome like '%sc%t%';
+
+select * from cursos where nome like 'ja%_t'; # começa com ja e terminal com a letra t
+
+select distinct nacionalidade from pessoas order by nacionalidade; # nao repete o pais
+
+select count(*) from pessoas;
+
+select count(*) from cursos where carga > 80;
+
+select max(carga) from cursos;
+
+select max(totaulas) from cursos where ano = '2022';
+
+select min(totaulas) from cursos where ano = '2022';
+
+select sum(totaulas) from cursos where ano = '2022';
+
+select avg(totaulas) from cursos where ano = '2022';
+
+select totaulas, count(*) from cursos group by totaulas order by totaulas;
+
+select carga, count(nome) from cursos where totaulas = 110 group by carga;
+
+select ano, count(*) from cursos group by ano having count(ano) >= 3 order by count(*) desc;
+
+select carga, count(*) from cursos where ano > 2020 group by carga having carga > (select avg(carga) from cursos);
+
 
 ```
 
