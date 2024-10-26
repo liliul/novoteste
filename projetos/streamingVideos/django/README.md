@@ -6,28 +6,9 @@ Repositório do Django (admin dos vídeos)
 
 ## Requerimentos
 
-Instalar o Python 3.12.6:
-
-- Mac: Baixe direto do site oficial
-- Windows (WSL 2) e Linux: Use o asdf: [https://asdf-vm.com/](). Rode os seguintes comandos:
-
-```bash
-sudo apt update
-
-sudo apt-get install build-essential zlib1g-dev libffi-dev libssl-dev libbz2-dev libreadline-dev libsqlite3-dev liblzma-dev 
-
-asdf plugin add python
-asdf install python 3.12.6
-asdf global python 3.12.6
-```
+Na aula 01, precisamos instalar o Python, agora temos um container Python no Docker, então não é mais necessário instalar o Python na máquina.
 
 ## Rodar a aplicação
-
-Coloque a variável `PIPENV_VENV_IN_PROJECT` no seu `.bashrc` ou `.zshrc`:
-
-```bash
-export PIPENV_VENV_IN_PROJECT=1
-```
 
 Levante os containers do PostgreSQL e PGAdmin:
 
@@ -35,10 +16,10 @@ Levante os containers do PostgreSQL e PGAdmin:
 docker-compose up -d
 ```
 
-Instale o Pipenv:
+Entre no container do Django:
 
 ```bash
-pip install pipenv
+docker-compose exec django bash
 ```
 
 Instale as dependências:
@@ -74,4 +55,43 @@ python manage.py runserver
 Acesse o admin em [http://localhost:8000/admin]().
 
 
+## Dados de testes
 
+A aplicação já possui dados de testes, rode o comando abaixo para carregá-los:
+
+```bash
+python manage.py flush && python manage.py loaddata initial_data.json
+```
+
+O comando `flush` limpa o banco de dados e o `loaddata` carrega os dados de testes.
+
+## Configurar /etc/hosts
+
+O RabbitMQ está sendo executado no `docker-compose.yaml` da aplicação Golang, assim como o Django está em outro `docker-compose.yaml`, os containers estão em redes diferentes.
+Usaremos a estratégia do `host.docker.internal` para comunicação entre os containers.
+
+Para isto é necessário configurar um endereços que todos os containers Docker consigam acessar.
+
+Acrescente no seu /etc/hosts (para Windows o caminho é C:\Windows\system32\drivers\etc\hosts):
+```
+127.0.0.1 host.docker.internal
+```
+Em todos os sistemas operacionais é necessário abrir o programa para editar o *hosts* como Administrator da máquina ou root.
+
+Obs.: Se estiver usando o Docker Desktop, pode ser que o `host.docker.internal` já esteja configurado, então remova a linha do arquivo hosts e acrescente a recomendada acima.
+
+
+## Consumer do RabbitMQ
+
+Para rodar o consumer do RabbitMQ, entre no container do Django:
+
+```bash
+docker-compose exec django bash
+```
+
+Rode os consumers:
+
+```bash
+python manage.py consumer_upload_chunks_to_external_storage
+python manage.py consumer_register_processed_video_path
+```
