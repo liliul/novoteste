@@ -1,0 +1,25 @@
+{
+  "servers": {
+	"html": {
+            "command": ["vscode-html-languageserver", "--stdio"],
+            "url": "https://github.com/Microsoft/vscode/tree/main/extensions/html-language-features/server",
+            "highlightingModeRegex": "^HTML$"
+        },
+	 "javascript": {
+            "command": ["typescript-language-server", "--stdio"],
+            "rootIndicationFileNames": ["package.json", "package-lock.json"],
+            "url": "https://github.com/theia-ide/typescript-language-server",
+            "highlightingModeRegex": "^JavaScript.*$"
+        },
+        "json": {
+            "command": ["vscode-json-languageserver", "--stdio"],
+            "url": "https://github.com/microsoft/vscode/tree/main/extensions/json-language-features/server",
+            "highlightingModeRegex": "^JSON$"
+        },
+        "html": {
+            "command": ["html-languageserver", "--stdio"],
+            "url": "https://github.com/Microsoft/vscode/tree/main/extensions/html-language-features/server",
+            "highlightingModeRegex": "^HTML$"
+        }
+  }
+}
