@@ -1,3 +1,5 @@
+### Numeros primos
+
 Números primos são números inteiros maiores que 1 que têm exatamente dois divisores: 1 e eles mesmos. Isso significa que um número primo não pode ser dividido de forma exata por nenhum outro número inteiro, exceto por 1 e pelo próprio número.
 
 Por exemplo:
@@ -8,4 +10,18 @@ Por exemplo:
 
 Os primeiros números primos são: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, entre outros.
 
+#### com descobrir o numero primo
+
 <hr>
+
+### Raiz quadrada
+
+1^2=1,
+2^2=4,
+3^2=9,
+4^2=16,
+5^2=25,
+6^2=36,
+7^2=49,
+8^2=64,
+9^2=81

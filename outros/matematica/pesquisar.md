@@ -3,3 +3,4 @@
 3. potencia expoente
 4. conjunto numericos naturais e inteiros
 5. mmc e mdc
+6. fatoração de um numero
