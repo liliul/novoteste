@@ -19,6 +19,33 @@ Portanto, 5! = 120.
 
 Lembre-se que o fatorial de 0 (0!) é definido como 1. Se precisar de mais exemplos ou ajuda, é só avisar!
 
+### Duplo fatorial
+
+O duplo fatorial de um número ímpar, como 5, é calculado multiplicando todos os números ímpares até esse número. Para 5!!, você faria o seguinte:
+
+5!! = 5 × 3 × 1
+
+Agora, vamos calcular:
+
+5 × 3 = 15
+15 × 1 = 15
+
+Portanto, o duplo fatorial de 5 é 15.
+
+O duplo fatorial de um número par, como 8, é calculado multiplicando todos os números pares até esse número. Para 8!!, você faria o seguinte:
+
+8!! = 8 × 6 × 4 × 2
+
+Agora, vamos calcular:
+
+1. 8 × 6 = 48
+2. 48 × 4 = 192
+3. 192 × 2 = 384
+
+Portanto, o duplo fatorial de 8 é 384.
+
+## FIM
+
 ### Primordial
 
 Para calcular o 5# primordial, você deve seguir a definição de números primordiais. O número 5# (lê-se "5 primorial") é o produto de todos os números primos menores ou iguais a 5.

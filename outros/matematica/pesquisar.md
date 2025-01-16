@@ -4,6 +4,9 @@
 4. conjunto numericos naturais e inteiros
 5. mmc e mdc
 6. fatoração de um numero
+7. tetração
+8. termial
+9. subfatorials
 
 ---
 
