@@ -7,6 +7,7 @@
 7. tetração
 8. termial
 9. subfatorials
+10. regra dos sinais
 
 ---
 
