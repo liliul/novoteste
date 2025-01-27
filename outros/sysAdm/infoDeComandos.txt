@@ -1,0 +1,32 @@
+1 lpi material 010-160 parado: 289 
+
+
+$1, $2, … $9
+Contêm argumentos posicionais passados para o script.
+$#
+Contém o número de argumentos passados para o script.
+$PATH
+Contém os diretórios que possuem executáveis usados pelo sistema.
+
+
+Tome nota da declaração if. Usamos -eq para fazer uma comparação numérica. Nesse caso,
+estamos testando se o valor de $# é igual a um. As outras comparações que podemos realizar são:
+-ne
+Diferente de
+-gt
+Maior que
+-ge
+Maior que ou igual a
+-lt
+Menos que
+-le
+Menos que ou igual a
+
+
+shift
+Remove o primeiro elemento de um arranjo.
+Variáveis Especiais:
+$?
+Contém o código de saída do último comando executado
+$@, $*
+Contém todos os argumentos passados para o script, como um arranjo.
