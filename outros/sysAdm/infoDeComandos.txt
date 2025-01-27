@@ -1,4 +1,4 @@
-1 lpi material 010-160 parado: 289 
+1 lpi material 010-160 parado: 295
 
 
 $1, $2, … $9
@@ -30,3 +30,54 @@ $?
 Contém o código de saída do último comando executado
 $@, $*
 Contém todos os argumentos passados para o script, como um arranjo.
+
+
+Comando do terminal [
+    listar todos os discos rígidos e partições em /dev:  ls -l /dev/sd* 
+
+    comando journalctl [
+
+        journalctl: é o utilitário usado para ler e consultar o banco de dados do diário do systemd.
+            Quando invocado sem opções, ele imprime o diário inteiro
+
+        No entanto, se chamado com as opções -k ou --dmesg, será equivalente ao uso do comando
+        dmesg: journalctl -k ou --dmesg
+
+
+        Dentre as outras opções interessantes para o journalctl estão:
+        -b, --boot
+        Mostra informações de inicialização.
+        -u
+        Mostra mensagens sobre uma unidade especificada. Grosso modo, uma unidade pode ser
+        definida como qualquer recurso tratado pelo systemd. Por exemplo, journalctl -u
+        apache2.service é usado para ler mensagens sobre o servidor web apache2.
+        -f
+        Mostra as mensagens mais recentes do diário e segue imprimindo novas entradas à medida
+        que elas são incluídas no diário — a exemplo de tail -f.
+    ]
+
+
+    comandos [
+        cat
+        Concatena/imprime o conteúdo do arquivo.
+        dmesg
+        Imprime o buffer do anel do kernel.
+        echo
+        Exibe uma linha de texto ou uma nova linha.
+        file
+        Determina o tipo de arquivo.
+        grep
+        Imprime linhas de acordo com um padrão.
+        last
+        Mostra uma lista dos últimos usuários conectados.
+        less
+        Exibe o conteúdo do arquivo uma página de cada vez.
+        ls
+        Lista o conteúdo do diretório.
+        journalctl
+        Consulta o diário systemd.
+        tail
+        Exibe as últimas linhas de um arquivo.
+    ]
+]
+
