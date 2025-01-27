@@ -1,0 +1,4 @@
+pesquisar no lpi-10-160 [
+    
+    1. variáveis e customização do shell.
+]
