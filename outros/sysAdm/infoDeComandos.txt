@@ -79,5 +79,30 @@ Comando do terminal [
         tail
         Exibe as últimas linhas de um arquivo.
     ]
+
+
+    comandos criar usuarios  e grupos [
+        Os seguintes comandos foram discutidos nesta lição:
+        useradd
+        Cria uma nova conta de usuário.
+        groupadd
+        Cria uma nova conta de grupo.
+        userdel
+        Exclui uma conta de usuário.
+        groupdel
+        Exclui uma conta de grupo.
+        passwd
+        Altera a senha das contas de usuário e controla todos os aspectos do envelhecimento da senha.
+    ]
+
+    
+    comandos de permisão chmod [
+        chmod
+        Altera as permissões de um arquivo ou diretório..
+        chown
+        Altera o usuário e/ou o grupo proprietário de um arquivo ou diretório.
+        chgrp
+        Altera o grupo proprietário de um arquivo ou diretório.
+    ]
 ]
 
