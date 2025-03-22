@@ -1,50 +1,50 @@
-Operações Decimais;
+## Operações Decimais;
 
-Fatoração;
+## Fatoração;
 
-Potenciação (Propriedades);
+## Potenciação (Propriedades);
 
-Frações;
+## Frações;
 
-Equação de 1° Grau;
+## Equação de 1° Grau;
 
-Sistema de Equações;
+## Sistema de Equações;
 
-Regra de 3;
+## Regra de 3;
 
-Porcentagem;
+## Porcentagem;
 
-Juros;
+## Juros;
 
-Razão e Proporção;
+## Razão e Proporção;
 
-Conjuntos;
+## Conjuntos;
 
-Média, Moda e Mediana;
+## Média, Moda e Mediana;
 
-Função Afim;
+## Função Afim;
 
-Gráficos;
+## Gráficos;
 
-Equação de 2° Grau;
+## Equação de 2° Grau;
 
-Função Quadrática;
+## Função Quadrática;
 
-Probabilidade;
+## Probabilidade;
 
-Análise Combinatória 
+## Análise Combinatória 
 
-(Arranjo, Combinação e Permutação)
+ 1. (Arranjo, Combinação e Permutação)
 
-Função Exponencial;
+## Função Exponencial;
 
-Progressão Aritmética e Progressão Geométrica
+## Progressão Aritmética e Progressão Geométrica
 
-Matrizes (Determinantes)
+## Matrizes (Determinantes)
 
-Logaritmos (Propriedades)
+## Logaritmos (Propriedades)
 
-Geometria Plana
+## Geometria Plana
 
 (Áreas → Perímetros → Nome das Figuras)
 
@@ -58,7 +58,7 @@ Circunferência (Área, Perímetros, Setor Circular)
 
 Círculo Trigonométrico 
 
-Geometria Espacial
+## Geometria Espacial
 
 Área da Base
 
