@@ -1,0 +1,15 @@
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/bin/Debug/net9.0/classes
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/bin/Debug/net9.0/classes.deps.json
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/bin/Debug/net9.0/classes.runtimeconfig.json
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/bin/Debug/net9.0/classes.dll
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/bin/Debug/net9.0/classes.pdb
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.GeneratedMSBuildEditorConfig.editorconfig
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.AssemblyInfoInputs.cache
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.AssemblyInfo.cs
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.csproj.CoreCompileInputs.cache
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.sourcelink.json
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.dll
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/refint/classes.dll
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.pdb
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/classes.genruntimeconfig.cache
+/home/liliu/Documentos/gclone/outro/novoteste/cSharp/classes/obj/Debug/net9.0/ref/classes.dll
