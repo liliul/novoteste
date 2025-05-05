@@ -1,0 +1,66 @@
+# Ignorar resultados de build, pacotes e arquivos específicos da IDE
+
+# Resultados do Build
+[Bb]in/
+[Oo]bj/
+# Saída de build para projetos SDK-style (.NET Core/.NET 5+)
+*/[Bb]in/
+*/[Oo]bj/
+
+# Pacotes NuGet
+packages/
+
+# Arquivos gerados pelo Restore (versões mais antigas do .NET Core)
+project.lock.json
+
+# Arquivos do Visual Studio (VS) e IDEs
+.vs/                     # Configurações de usuário e estado da solução (VS 2017 e mais recentes)
+*.suo                    # Opções de usuário da solução (VS mais antigo)
+*.user                   # Opções de usuário do projeto (VS mais antigo)
+*.vssscc                 # Arquivos de integração de controle de código-fonte (VS)
+*.vsscc
+*.scc
+
+# Arquivos temporários
+*.tmp
+*.log
+*.pid
+*.swp                    # Arquivos swap do Vim
+*.swo
+
+# Arquivos de depuração e símbolos
+*.pdb                    # Arquivos de símbolos de depuração (geralmente em bin/obj, mas bom ser explícito)
+
+# Arquivos de resultados de Testes
+TestResults/
+
+# Logs de pacotes Node.js (se misturar com frontend)
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Arquivos gerados pelo Sistema Operacional
+.DS_Store                # macOS
+Thumbs.db                # Windows
+Desktop.ini              # Windows
+
+# Configuração Sensível (Gerenciamento cuidadoso necessário)
+# Se você tem arquivos de configuração que contêm informações sensíveis (conexões, chaves)
+# E estes *não* são templates mas sim as credenciais reais para o seu ambiente,
+# Considere ignorá-los. Ex:
+# appsettings.Development.json
+# appsettings.<Environment>.json  # Para ambientes específicos com credenciais reais
+# appsettings.secrets.json        # Padrão comum para arquivos de segredos locais
+# appsettings.*.user.json         # Padrão comum para overrides de usuário local
+
+# Arquivos de Publicação (depende da sua forma de deploy)
+# Se você publica diretamente numa pasta dentro do repositório
+# publish/
+# artifacts/
+
+# Explicitamente NÃO ignorar (garantir que arquivos importantes não sejam ignorados por regras genéricas)
+!*.csproj
+!*.fsproj
+!*.vbproj
+!*.sln
+!packages.config         # Se você ainda usa (csproj SDK-style não usa mais)
