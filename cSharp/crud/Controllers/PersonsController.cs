@@ -57,17 +57,19 @@ namespace crud.Controllers
 
         public async Task<IActionResult> UpdatePerson(int id, [FromBody] Person personUpdate)
         {
-            var persons = await _appDbContext.DB.FindAsync(id);
+            var existPerson = await _appDbContext.DB.FindAsync(id);
 
-            if(persons == null) {
+            if(existPerson == null) {
                 return NotFound("Person nao encontro Update");
             }
 
-            _appDbContext.Entry(persons).CurrentValues.SetValues(persons);
-
+            // _appDbContext.Entry(existPerson).CurrentValues.SetValues(personUpdate);
+            existPerson.Nome = personUpdate.Nome;
+            existPerson.Tipo = personUpdate.Tipo;
+            
             await _appDbContext.SaveChangesAsync();
 
-            return StatusCode(201, persons);
+            return Ok(existPerson);
         }
 
         [HttpDelete("{id}")]
