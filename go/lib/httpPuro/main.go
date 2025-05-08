@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 type Contact struct {
@@ -35,6 +36,10 @@ func (c *ContactService) Create(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusAccepted)
 }
 
+func handleCreateContact(w http.ResponseWriter, r *http.Request, service *ContactService) {
+	service.Create(w, r)
+}
+
 func (c *ContactService) List(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
@@ -46,6 +51,47 @@ func (c *ContactService) List(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(contact)
 }
 
+func (c *ContactService) Get(w http.ResponseWriter, r *http.Request, id int) {
+
+	w.Header().Set("Content-Type", "application/json")
+
+	if val, ok := c.Contacts[id]; ok {
+		json.NewEncoder(w).Encode(val)
+	} else {
+		http.Error(w, "Contact not found", http.StatusNotFound)
+	}
+}
+
+func handleGetContacts(w http.ResponseWriter, r *http.Request, service *ContactService) {
+	q := r.URL.Query()
+	if q.Get("id") != "" {
+		id, _ := strconv.Atoi(q.Get("id"))
+		service.Get(w, r, id)
+	} else {
+		service.List(w, r)
+	}
+}
+
+func (c *ContactService) Delete(w http.ResponseWriter, r *http.Request, id int) {
+	w.Header().Set("Content-Type", "application/json")
+	if _, ok := c.Contacts[id]; ok {
+		delete(c.Contacts, id)
+		w.WriteHeader(http.StatusOK)
+	} else {
+		http.Error(w, "Contact not found", http.StatusNotFound)
+	}
+}
+
+func handleDeleteContacts(w http.ResponseWriter, r *http.Request, service *ContactService) {
+	q := r.URL.Query()
+	if q.Get("id") != "" {
+		id, _ := strconv.Atoi(q.Get("id"))
+		service.Delete(w, r, id)
+	} else {
+		http.Error(w, "Contact not found", http.StatusNotFound)
+	}
+}
+
 func main() {
 	service := &ContactService{Contacts: make(map[int]Contact)}
 
@@ -55,9 +101,13 @@ func main() {
 		switch r.Method {
 		case http.MethodGet:
 			// fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-			service.List(w, r)
+			// service.List(w, r)
+			handleGetContacts(w, r, service)
 		case http.MethodPost:
-			service.Create(w, r)
+			// service.Create(w, r)
+			handleCreateContact(w, r, service)
+		case http.MethodDelete:
+			handleDeleteContacts(w, r, service)
 		default:
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		}
