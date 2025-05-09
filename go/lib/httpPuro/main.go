@@ -92,6 +92,34 @@ func handleDeleteContacts(w http.ResponseWriter, r *http.Request, service *Conta
 	}
 }
 
+func (c *ContactService) Update(w http.ResponseWriter, r *http.Request, id int) {
+	w.Header().Set("Content-Type", "application/json")
+
+	var contact Contact
+	err := json.NewDecoder(r.Body).Decode(&contact)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	if _, ok := c.Contacts[id]; ok {
+		contact.Id = id
+		c.Contacts[id] = contact
+	} else {
+		http.Error(w, "Contact not found", http.StatusNotFound)
+	}
+}
+
+func handleUpdateContacts(w http.ResponseWriter, r *http.Request, service *ContactService) {
+	q := r.URL.Query()
+	if q.Get("id") != "" {
+		id, _ := strconv.Atoi(q.Get("id"))
+		service.Update(w, r, id)
+	} else {
+		http.Error(w, "Contact not found", http.StatusNotFound)
+	}
+}
+
 func main() {
 	service := &ContactService{Contacts: make(map[int]Contact)}
 
@@ -108,6 +136,8 @@ func main() {
 			handleCreateContact(w, r, service)
 		case http.MethodDelete:
 			handleDeleteContacts(w, r, service)
+		case http.MethodPatch:
+			handleUpdateContacts(w, r, service)
 		default:
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		}
