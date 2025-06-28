@@ -24,3 +24,6 @@ Os materiais de estudo geralmente abrangem as seguintes áreas do conhecimento:
 - Matemática: Operações Básicas, Geometria, Álgebra e Resolução de Problemas. 
 
 - Ciências da Natureza: Ecologia, Saúde, Física e Química no cotidiano. 
+
+## sites
+https://querobolsa.com.br/revista/apostila-encceja-como-baixar-gratuitamente
