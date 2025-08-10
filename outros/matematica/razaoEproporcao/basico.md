@@ -423,7 +423,7 @@ Se $a:b = 3:4$, e $b:c = 5:6$, qual é a razão $a:c$?
 
 ---
 
-## Resposta
+## Resposta exercicios avançados
 
 
 Ótimo! Vamos resolver agora os **exercícios avançados** passo a passo com as **respostas finais destacadas**. 🧠✅
