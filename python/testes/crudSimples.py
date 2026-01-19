@@ -1,3 +1,5 @@
+import json
+
 sair = 'sair'
 db = []
 
@@ -11,7 +13,23 @@ def title_crud():
         escolha: 2 listar nomes
         escolha: 3 deletar nome
         escolha: 4 atualizar nome
+        escolha: 5 listando via json
     ''')
+
+def salvar_json():
+    with open("db/nomes.json", "w", encoding="utf-8") as arquivo:
+        json.dump(db, arquivo, ensure_ascii=False, indent=4)
+
+def carregar_json():
+    try:
+        with open("db/nomes.json", "r", encoding="utf-8") as arquivo:
+            dados = json.load(arquivo)
+            db.extend(dados)
+    except FileNotFoundError:
+        pass
+
+def listando_nomes_json():
+    carregar_json()
 
 def guardando_nome_db(data):
     db.append(data)
@@ -20,11 +38,14 @@ def criando_nomes():
     while True:
         input1 = input("digita nome: ")
         if input1 == sair:
+            salvar_json()
             break
 
         guardando_nome_db(input1)
 
 def listando_nomes():
+    listando_nomes_json()
+    
     if not db:
         print("Nenhum nome cadastrado.")
     else:
@@ -79,6 +100,8 @@ def main():
                 nome_novo = str(input("nome novo: "))
 
                 atualizando_nome(nome_antigo, nome_novo)
+            case 5:
+                listando_nomes_json()
             case _:
                 print('Escolher um numero nao letra ou outro caratecre')
 
