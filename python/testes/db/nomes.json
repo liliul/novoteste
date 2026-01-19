@@ -1,6 +1,10 @@
 [
-    "goku",
-    "sasuke",
-    "vegeta",
-    "naruto"
+    {
+        "id": 1,
+        "nome": "naruto"
+    },
+    {
+        "id": 2,
+        "nome": "Som Goku"
+    }
 ]

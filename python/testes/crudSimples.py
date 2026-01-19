@@ -16,9 +16,16 @@ def title_crud():
         escolha: 5 listando via json
     ''')
 
+def gerar_id():
+    if not db:
+        return 1
+    return db[-1]["id"] + 1
+
+
 def salvar_json():
     with open("db/nomes.json", "w", encoding="utf-8") as arquivo:
         json.dump(db, arquivo, ensure_ascii=False, indent=4)
+
 
 def carregar_json():
     try:
@@ -29,11 +36,14 @@ def carregar_json():
     except FileNotFoundError:
         pass
 
+
 def listando_nomes_json():
     carregar_json()
 
+
 def guardando_nome_db(data):
     db.append(data)
+
 
 def criando_nomes():
     while True:
@@ -42,7 +52,14 @@ def criando_nomes():
             salvar_json()
             break
 
-        guardando_nome_db(input1)
+        criar_nome = {
+            "id": gerar_id(),
+            "nome": input1
+        }
+
+        guardando_nome_db(criar_nome)
+        print('Nome criado com sucesso...')
+
 
 def listando_nomes():
     if not db:
@@ -50,29 +67,28 @@ def listando_nomes():
     else:
         print("Nomes cadastrados:")
         for nome in db:
-            print("-", nome)
+            print(f"ID: {nome['id']} | Nome: {nome['nome']}")
 
-def deletar_nome(nome):
-    nomesDb = db
 
-    if nome in nomesDb:
-        nomesDb.remove(nome)
-        print('Nome removido com sucesso.')
-    else:
-        print('Nome para deletar nao encontrado.')
-    return nomesDb
+def deletar_nome(id):
+    for item in db:
+        if item["id"] == id:
+            db.remove(item)
+            salvar_json()
+            print("Nome removido com sucesso.")
+            return
+    print("ID não encontrado.")
 
-def atualizando_nome(nome_antigo, nome_novo):
-    nomesDb = db 
 
-    if nome_antigo in nomesDb:
-        indice = nomesDb.index(nome_antigo)
-        nomesDb[indice] = nome_novo
-        print("Nome atualizado com sucesso.")
-    else:
-        print("Nome para atualizar não encontrado.")
+def atualizando_nome(id, nome_novo):
+    for item in db:
+        if item["id"] == id:
+            item["nome"] = nome_novo
+            salvar_json()
+            print("Nome atualizado com sucesso.")
+            return
+    print("ID não encontrado.")
 
-    return nomesDb
 
 def main():
     listando_nomes_json()
@@ -94,13 +110,13 @@ def main():
             case 2:
                 listando_nomes()
             case 3:
-                deletar = str(input("Digitar nome para deletar: "))
+                deletar = int(input("Digitar id para deletar: "))
                 deletar_nome(deletar)
             case 4:
-                nome_antigo = str(input("Nome antigos: "))
+                id_nome = int(input("ID do nome: "))
                 nome_novo = str(input("nome novo: "))
 
-                atualizando_nome(nome_antigo, nome_novo)
+                atualizando_nome(id_nome, nome_novo)
             case 5:
                 listando_nomes_json()
             case _:
