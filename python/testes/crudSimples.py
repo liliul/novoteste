@@ -24,6 +24,7 @@ def carregar_json():
     try:
         with open("db/nomes.json", "r", encoding="utf-8") as arquivo:
             dados = json.load(arquivo)
+            db.clear()
             db.extend(dados)
     except FileNotFoundError:
         pass
@@ -44,8 +45,6 @@ def criando_nomes():
         guardando_nome_db(input1)
 
 def listando_nomes():
-    listando_nomes_json()
-    
     if not db:
         print("Nenhum nome cadastrado.")
     else:
@@ -76,6 +75,8 @@ def atualizando_nome(nome_antigo, nome_novo):
     return nomesDb
 
 def main():
+    listando_nomes_json()
+    
     while True:
         title_crud()     
         try:
