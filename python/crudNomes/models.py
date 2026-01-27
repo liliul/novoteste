@@ -1,6 +1,9 @@
 from pydantic import BaseModel
 from uuid import UUID
 
-class Nome(BaseModel):
+class NomeCreate(BaseModel):
+    nome: str
+
+class NomeResponse(BaseModel):
     id: UUID
     nome: str

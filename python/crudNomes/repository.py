@@ -10,9 +10,15 @@ class NomeRepository:
         self._load()
 
     def _load(self):
-        if DB_PATH.exists():
+        if not DB_PATH.exists():
+            self.db = []
+            return
+
+        try:
             with open(DB_PATH, "r", encoding="utf-8") as f:
                 self.db = json.load(f)
+        except (json.JSONDecodeError, ValueError):
+            self.db = []
 
     def _save(self):
         DB_PATH.parent.mkdir(exist_ok=True)
