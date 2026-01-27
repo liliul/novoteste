@@ -94,8 +94,6 @@ def init_app():
     listando_nomes_json()
 
 def main():
-    # listando_nomes_json()
-    
     while True:
         title_crud()     
         try:
