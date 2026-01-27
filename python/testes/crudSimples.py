@@ -1,4 +1,5 @@
 import json
+import argparse
 
 sair = 'sair'
 db = []
@@ -89,9 +90,11 @@ def atualizando_nome(id, nome_novo):
             return
     print("ID não encontrado.")
 
+def init_app():
+    listando_nomes_json()
 
 def main():
-    listando_nomes_json()
+    # listando_nomes_json()
     
     while True:
         title_crud()     
@@ -122,4 +125,14 @@ def main():
             case _:
                 print('Escolher um numero nao letra ou outro caratecre')
 
-main()
+parser = argparse.ArgumentParser()
+parser.add_argument("--list", action="store_true", help="Listar Nomes")
+args = parser.parse_args()
+
+if __name__ == "__main__":
+    init_app()
+
+    if args.list:
+        listando_nomes()
+    else:
+        main()
