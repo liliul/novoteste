@@ -1,0 +1,25 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual
+venv/
+.venv/
+env/
+ENV/
+
+# Variáveis de ambiente
+.env
+
+# Arquivos do Python
+*.log
+*.sqlite3
+
+# IDEs / editores
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
