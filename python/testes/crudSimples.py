@@ -1,5 +1,6 @@
 import json
 import argparse
+import uuid
 
 sair = 'sair'
 db = []
@@ -17,11 +18,14 @@ def title_crud():
         escolha: 5 listando via json
     ''')
 
-def gerar_id():
-    if not db:
-        return 1
-    return db[-1]["id"] + 1
+# def gerar_id():
+#     if not db:
+#         return 1
+#     return db[-1]["id"] + 1
 
+def gerar_id():
+    id_unico = uuid.uuid4()
+    return str(id_unico)
 
 def salvar_json():
     with open("db/nomes.json", "w", encoding="utf-8") as arquivo:
@@ -111,10 +115,10 @@ def main():
             case 2:
                 listando_nomes()
             case 3:
-                deletar = int(input("Digitar id para deletar: "))
+                deletar = str(input("Digitar id para deletar: "))
                 deletar_nome(deletar)
             case 4:
-                id_nome = int(input("ID do nome: "))
+                id_nome = str(input("ID do nome: "))
                 nome_novo = str(input("nome novo: "))
 
                 atualizando_nome(id_nome, nome_novo)
