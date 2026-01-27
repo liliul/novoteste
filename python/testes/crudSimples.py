@@ -16,6 +16,7 @@ def title_crud():
         escolha: 3 deletar nome
         escolha: 4 atualizar nome
         escolha: 5 listando via json
+        escolha: 6 atualizar nome via id
     ''')
 
 # def gerar_id():
@@ -84,6 +85,27 @@ def deletar_nome(id):
             return
     print("ID não encontrado.")
 
+def buscar_por_id(id):
+    for item in db:
+        if item["id"] == id:
+            return item
+    return None
+
+def atualizando_nome_via_id(id):
+    itemId = buscar_por_id(id)
+
+    if not itemId:
+        print("ID não encontrado.")
+        return
+
+    print(f"Nome atual: {itemId['nome']}")
+    nome_novo = input("Novo nome (Enter para manter): ").strip()
+
+    if nome_novo:
+        itemId["nome"] = nome_novo
+
+    salvar_json()
+    print("Nome atualizado com sucesso.")
 
 def atualizando_nome(id, nome_novo):
     for item in db:
@@ -124,6 +146,9 @@ def main():
                 atualizando_nome(id_nome, nome_novo)
             case 5:
                 listando_nomes_json()
+            case 6:
+                id_nome = input("ID do nome: ").strip()
+                atualizando_nome_via_id(id_nome)
             case _:
                 print('Escolher um numero nao letra ou outro caratecre')
 
