@@ -1,0 +1,16 @@
+# Build output
+build/
+build-release/
+dist/
+*.exe
+*.o
+*.obj
+
+# IDE / Editor
+.vscode/
+.cache/
+
+# Misc
+*.log
+*.swp
+*~
