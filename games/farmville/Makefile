@@ -1,11 +1,17 @@
 CC = gcc
 
-CFLAGS =
+SRC := $(shell find src -name "*.c")
+
+CFLAGS = -Wall -Wextra -std=c99
+
 LIBS = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
 all:
 	mkdir -p build
-	$(CC) src/main.c -o build/farmville $(LIBS)
+	$(CC) $(SRC) -o build/farmville $(CFLAGS) $(LIBS)
 
 run: all
 	./build/farmville
+
+clean:
+	rm -rf build
