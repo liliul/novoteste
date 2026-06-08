@@ -25,6 +25,10 @@ int main(void) {
   }
 
   bool estaColidindo = false;
+  bool circleColidindo = false;
+
+  // parede
+  Rectangle parede = {400.0f, 100.0f, 80.0f, 250.0f};
 
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
@@ -54,6 +58,10 @@ int main(void) {
     if (IsKeyDown(KEY_S))
       rectanglePositionY += 5.0f;
 
+    // Guardamos a posição atual antes do movimento caso precisemos voltar atrás
+    float antigaPositionX = moverCachorroPositionX;
+    float antigaPositionY = moverCachorroPositionY;
+
     // mover cachorro
     if (IsKeyDown(KEY_Z))
       moverCachorroPositionX -= 5.0f;
@@ -75,8 +83,28 @@ int main(void) {
     Rectangle hitboxQuadrado = {rectanglePositionX, rectanglePositionY, 40.0f,
                                 40.0f};
 
+    Vector2 hitboxCircles = {ballPosition.x, ballPosition.y};
+
+    // 3. Checamos se essa nova posição colide com a parede
+    if (CheckCollisionRecs(hitboxCachorro, parede)) {
+      // Se colidiu, nós REJEITAMOS a nova posição e forçamos ele a voltar para
+      // onde estava!
+      moverCachorroPositionX = antigaPositionX;
+      moverCachorroPositionY = antigaPositionY;
+
+      printf("colisao cachorro /n");
+    }
+
+    if (CheckCollisionCircleRec(hitboxCircles, 40, parede)) {
+      printf("colisao circulo /n");
+    }
+
     // 3. A Raylib checa se os dois retângulos se cruzam
     estaColidindo = CheckCollisionRecs(hitboxCachorro, hitboxQuadrado);
+    circleColidindo = CheckCollisionCircleRec(hitboxCircles, 40, parede);
+    circleColidindo =
+        CheckCollisionCircleRec(hitboxCircles, 40, hitboxCachorro);
+
     // ---------------------------------------------------------------------------------
 
     // Draw
@@ -84,6 +112,11 @@ int main(void) {
     BeginDrawing();
 
     ClearBackground(RAYWHITE);
+
+    // desenhar parede
+    DrawRectangleRec(parede, DARKGRAY);
+    DrawText("PAREDE SOLIDA", (int)parede.x - 10, (int)parede.y - 25, 14,
+             DARKGRAY);
 
     // carregando textura
     DrawTexture(bg, moverCachorroPositionX, moverCachorroPositionY, WHITE);
@@ -105,12 +138,16 @@ int main(void) {
     DrawRectangle((int)rectanglePositionX, (int)rectanglePositionY, 40, 40,
                   corDoQuadrado);
 
+    Color corCircle = circleColidindo ? BLUE : YELLOW;
+    DrawCircleV(ballPosition, 50, corCircle);
+
     EndDrawing();
     //----------------------------------------------------------------------------------
   }
 
   // De-Initialization
   //--------------------------------------------------------------------------------------
+  UnloadTexture(bg);
   CloseWindow(); // Close window and OpenGL context
   //--------------------------------------------------------------------------------------
 
