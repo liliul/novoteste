@@ -21,8 +21,11 @@ int main(void) {
 
   Texture2D bg = LoadTexture("cachorro_dogo_sentado.png");
   if (bg.id == 0) {
-    printf("asddsadas");
+    printf("Errrrrrrrrrrooooooor");
   }
+
+  bool estaColidindo = false;
+
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 
@@ -60,6 +63,22 @@ int main(void) {
       moverCachorroPositionY -= 5.0f;
     if (IsKeyDown(KEY_V))
       moverCachorroPositionY += 5.0f;
+
+    // LÓGICA DE COLISÃO
+    // ---------------------------------------------------------------------------------
+    // 1. Criamos o retângulo invisível do cachorro com base na posição dele e
+    // tamanho da imagem
+    Rectangle hitboxCachorro = {moverCachorroPositionX, moverCachorroPositionY,
+                                (float)bg.width, (float)bg.height};
+
+    // 2. Criamos o retângulo do quadrado amarelo
+    Rectangle hitboxQuadrado = {rectanglePositionX, rectanglePositionY, 40.0f,
+                                40.0f};
+
+    // 3. A Raylib checa se os dois retângulos se cruzam
+    estaColidindo = CheckCollisionRecs(hitboxCachorro, hitboxQuadrado);
+    // ---------------------------------------------------------------------------------
+
     // Draw
     //----------------------------------------------------------------------------------
     BeginDrawing();
@@ -74,6 +93,17 @@ int main(void) {
     DrawCircleV(ballPosition, 50, GREEN);
 
     DrawRectangle(rectanglePositionX, rectanglePositionY, 40, 40, YELLOW);
+
+    // colidindo
+    if (estaColidindo) {
+      DrawText("COLISAO DETECTADA!", 10, 40, 24, RED);
+    }
+
+    // Se houver colisão, pintamos o quadrado de vermelho. Se não, ele continua
+    // amarelo.
+    Color corDoQuadrado = estaColidindo ? RED : YELLOW;
+    DrawRectangle((int)rectanglePositionX, (int)rectanglePositionY, 40, 40,
+                  corDoQuadrado);
 
     EndDrawing();
     //----------------------------------------------------------------------------------
