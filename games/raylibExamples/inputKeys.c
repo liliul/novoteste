@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include <stdio.h>
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -13,6 +14,15 @@ int main(void) {
 
   Vector2 ballPosition = {(float)screenWidth / 2, (float)screenHeight / 2};
 
+  int rectanglePositionX = screenWidth / 5;
+  int rectanglePositionY = screenHeight / 5;
+  int moverCachorroPositionX = 0;
+  int moverCachorroPositionY = 0;
+
+  Texture2D bg = LoadTexture("cachorro_dogo_sentado.png");
+  if (bg.id == 0) {
+    printf("asddsadas");
+  }
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 
@@ -31,15 +41,39 @@ int main(void) {
       ballPosition.y += 2.0f;
     //----------------------------------------------------------------------------------
 
+    // input a w d s
+    if (IsKeyDown(KEY_A))
+      rectanglePositionX -= 5.0f;
+    if (IsKeyDown(KEY_D))
+      rectanglePositionX += 5.0f;
+    if (IsKeyDown(KEY_W))
+      rectanglePositionY -= 5.0f;
+    if (IsKeyDown(KEY_S))
+      rectanglePositionY += 5.0f;
+
+    // mover cachorro
+    if (IsKeyDown(KEY_Z))
+      moverCachorroPositionX -= 5.0f;
+    if (IsKeyDown(KEY_X))
+      moverCachorroPositionX += 5.0f;
+    if (IsKeyDown(KEY_C))
+      moverCachorroPositionY -= 5.0f;
+    if (IsKeyDown(KEY_V))
+      moverCachorroPositionY += 5.0f;
     // Draw
     //----------------------------------------------------------------------------------
     BeginDrawing();
 
     ClearBackground(RAYWHITE);
 
-    DrawText("move the ball with arrow keys", 10, 10, 20, DARKGRAY);
+    // carregando textura
+    DrawTexture(bg, moverCachorroPositionX, moverCachorroPositionY, WHITE);
 
-    DrawCircleV(ballPosition, 50, MAROON);
+    DrawText("mover bola com setas do teclado", 10, 10, 20, DARKGRAY);
+
+    DrawCircleV(ballPosition, 50, GREEN);
+
+    DrawRectangle(rectanglePositionX, rectanglePositionY, 40, 40, YELLOW);
 
     EndDrawing();
     //----------------------------------------------------------------------------------
