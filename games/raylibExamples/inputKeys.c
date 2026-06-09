@@ -19,7 +19,7 @@ int main(void) {
   int moverCachorroPositionX = 0;
   int moverCachorroPositionY = 0;
 
-  Texture2D bg = LoadTexture("cachorro_dogo_sentado.png");
+  Texture2D bg = LoadTexture("assets/cachorro_dogo_sentado.png");
   if (bg.id == 0) {
     printf("Errrrrrrrrrrooooooor");
   }
