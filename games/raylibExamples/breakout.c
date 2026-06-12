@@ -32,11 +32,35 @@ typedef enum {
   GAME_WIN,
   GAME_OVER,
   MENU,
-  QUIT
+  QUIT,
+  MENUESC
 } GameState;
 
 Brick bricks[ROWS][COLS];
 GameState state = MENU;
+
+int MenuESC(void) {
+  if (IsKeyPressed(KEY_Y)) {
+    state = MENUESC;
+  }
+  if (IsKeyPressed(KEY_V)) {
+    state = GAME_PLAYING;
+  }
+
+  if (IsKeyPressed(KEY_P)) {
+    if (state == GAME_PLAYING) {
+      state = GAME_PAUSED;
+    } else if (state == GAME_PAUSED) {
+      state = GAME_PLAYING;
+    }
+  }
+
+  if (IsKeyPressed(KEY_TWO)) {
+    state = QUIT;
+  }
+
+  return 0;
+}
 
 int main(void) {
   int screenWidth = 800;
@@ -73,18 +97,7 @@ int main(void) {
   SetTargetFPS(60);
 
   while (!WindowShouldClose()) {
-
-    if (IsKeyPressed(KEY_P)) {
-      if (state == GAME_PLAYING) {
-        state = GAME_PAUSED;
-      } else if (state == GAME_PAUSED) {
-        state = GAME_PLAYING;
-      }
-    }
-
-    if (IsKeyPressed(KEY_TWO)) {
-      state = QUIT;
-    }
+    MenuESC();
 
     if (state == MENU) {
       if (IsKeyPressed(KEY_ONE)) {
@@ -141,11 +154,28 @@ int main(void) {
       // colisão com raquete
       paddleRect.x = paddle.x;
       paddleRect.y = paddle.y;
+
+      // desenhar tijolos
+      for (int row = 0; row < ROWS; row++) {
+        for (int col = 0; col < COLS; col++) {
+          // destruir tijolos
+          if (bricks[row][col].active &&
+              CheckCollisionCircleRec(ball.position, ball.radius,
+                                      bricks[row][col].rect)) {
+            bricks[row][col].active = false;
+
+            ball.velocity.y *= -1;
+            score += 10;
+            bricksDestroyers += 1;
+          }
+        }
+      }
     }
 
     // game over
     if (ball.position.y > screenHeight) {
       state = GAME_OVER;
+      MenuESC();
     }
 
     // vitoria
@@ -176,17 +206,6 @@ int main(void) {
           if (bricks[row][col].active) {
             DrawRectangleRec(bricks[row][col].rect, BLUE);
           }
-
-          // destruir tijolos
-          if (bricks[row][col].active &&
-              CheckCollisionCircleRec(ball.position, ball.radius,
-                                      bricks[row][col].rect)) {
-            bricks[row][col].active = false;
-
-            ball.velocity.y *= -1;
-            score += 10;
-            bricksDestroyers += 1;
-          }
         }
       }
 
@@ -211,6 +230,13 @@ int main(void) {
 
       if (state == GAME_WIN) {
         DrawText("Vitoria (* - *)", 250, 300, 60, GREEN);
+      }
+
+      if (state == MENUESC) {
+        ClearBackground(WHITE);
+
+        DrawText("v: Voltar para Game", 250, 310, 25, VIOLET);
+        DrawText("2. Quit Game", 250, 360, 25, BLUE);
       }
     }
 
