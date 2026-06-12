@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define ROWS 2
-#define COLS 5
+#define ROWS 5
+#define COLS 10
 
 // raquete
 typedef struct {
@@ -40,7 +40,7 @@ Brick bricks[ROWS][COLS];
 GameState state = MENU;
 
 int MenuESC(void) {
-  if (IsKeyPressed(KEY_Y)) {
+  if (IsKeyPressed(KEY_ESCAPE)) {
     state = MENUESC;
   }
   if (IsKeyPressed(KEY_V)) {
@@ -86,17 +86,40 @@ int main(void) {
   // inicializar blocos
   for (int row = 0; row < ROWS; row++) {
     for (int col = 0; col < COLS; col++) {
-      bricks[row][col].rect = (Rectangle){col * 75 + 20, row * 35 + 40, 70, 30};
+      // bricks[row][col].rect = (Rectangle){col * 75 + 20, row * 35 + 40, 70,
+      // 30};
 
       bricks[row][col].active = true;
     }
   }
 
+  SetConfigFlags(FLAG_WINDOW_RESIZABLE);
   InitWindow(screenWidth, screenHeight, "Breakout");
-
   SetTargetFPS(60);
 
   while (!WindowShouldClose()) {
+    // resolução responsiva
+    screenWidth = GetScreenWidth();
+    screenHeight = GetScreenHeight();
+
+    // blocos dinamicos em qualquer resolução
+    float paddingX = 10.0f;
+    float paddingY = 40.0f;
+    float spacing = 5.0f;
+
+    float brickWidth =
+        (screenWidth - (paddingX * 2) - (spacing * (COLS - 1))) / COLS;
+    float brickHeight = 25.0f;
+
+    for (int row = 0; row < ROWS; row++) {
+      for (int col = 0; col < COLS; col++) {
+        bricks[row][col].rect.x = paddingX + col * (brickWidth + spacing);
+        bricks[row][col].rect.y = paddingY + row * (brickHeight + spacing);
+        bricks[row][col].rect.width = brickWidth;
+        bricks[row][col].rect.height = brickHeight;
+      }
+    }
+
     MenuESC();
 
     if (state == MENU) {
@@ -120,7 +143,7 @@ int main(void) {
         paddle.x = 0;
       }
 
-      if (paddle.x + paddle.width > 800) {
+      if (paddle.x + paddle.width > screenWidth) {
         paddle.x = screenWidth - paddle.width;
       }
 
@@ -143,6 +166,10 @@ int main(void) {
         ball.velocity.y *= -1;
       }
 
+      // colisão com raquete
+      paddleRect.x = paddle.x;
+      paddleRect.y = paddle.y;
+
       // colisão da bol com a parede
       if (CheckCollisionCircleRec(ball.position, ball.radius, paddleRect) &&
           ball.velocity.y > 0) {
@@ -151,11 +178,7 @@ int main(void) {
         ball.position.y = paddle.y - ball.radius;
       }
 
-      // colisão com raquete
-      paddleRect.x = paddle.x;
-      paddleRect.y = paddle.y;
-
-      // desenhar tijolos
+      // checar colisão com tijolos
       for (int row = 0; row < ROWS; row++) {
         for (int col = 0; col < COLS; col++) {
           // destruir tijolos
@@ -199,6 +222,7 @@ int main(void) {
       DrawText("2. Quit Game", 250, 360, 25, BLUE);
 
     } else {
+      ClearBackground(BLACK);
 
       // desenhar tijolos
       for (int row = 0; row < ROWS; row++) {
@@ -208,8 +232,6 @@ int main(void) {
           }
         }
       }
-
-      ClearBackground(BLACK);
 
       DrawText("Meu primeiro Breakout", 250, 280, 30, WHITE);
 
