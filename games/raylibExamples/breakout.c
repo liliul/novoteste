@@ -26,7 +26,14 @@ typedef struct {
   bool active;
 } Brick;
 
-typedef enum { GAME_PLAYING, GAME_PAUSED, GAME_WIN, GAME_OVER, MENU } GameState;
+typedef enum {
+  GAME_PLAYING,
+  GAME_PAUSED,
+  GAME_WIN,
+  GAME_OVER,
+  MENU,
+  QUIT
+} GameState;
 
 Brick bricks[ROWS][COLS];
 GameState state = MENU;
@@ -73,6 +80,10 @@ int main(void) {
       } else if (state == GAME_PAUSED) {
         state = GAME_PLAYING;
       }
+    }
+
+    if (IsKeyPressed(KEY_TWO)) {
+      state = QUIT;
     }
 
     if (state == MENU) {
@@ -142,13 +153,21 @@ int main(void) {
       state = GAME_WIN;
     }
 
+    // sair do jogo
+    if (state == QUIT) {
+      CloseWindow();
+      return 0;
+    }
+
     // desenhar
     BeginDrawing();
 
     if (state == MENU) {
       ClearBackground(BLACK);
 
-      DrawText("1. Iniciar partida", 250, 360, 25, VIOLET);
+      DrawText("1. Iniciar partida", 250, 310, 25, VIOLET);
+      DrawText("2. Quit Game", 250, 360, 25, BLUE);
+
     } else {
 
       // desenhar tijolos
