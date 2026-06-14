@@ -40,60 +40,66 @@ int main(void) {
   SetTargetFPS(60);
 
   while (!WindowShouldClose()) {
-    moveTimer += GetFrameTime();
+    if (!gameOver) {
+      moveTimer += GetFrameTime();
 
-    if (moveTimer >= moveDelay) {
-      moveTimer = 0;
+      if (moveTimer >= moveDelay) {
+        moveTimer = 0;
 
-      for (int i = snakeLength - 1; i > 0; i--) {
-        snake[i] = snake[i - 1];
+        for (int i = snakeLength - 1; i > 0; i--) {
+          snake[i] = snake[i - 1];
+        }
+
+        snake[0].x += dirX;
+        snake[0].y += dirY;
       }
 
-      snake[0].x += dirX;
-      snake[0].y += dirY;
-    }
+      if (IsKeyPressed(KEY_UP) && dirY != 1) {
+        dirX = 0;
+        dirY = -1;
+      }
 
-    if (IsKeyPressed(KEY_UP) && dirY != 1) {
-      dirX = 0;
-      dirY = -1;
-    }
+      if (IsKeyPressed(KEY_DOWN) && dirY != -1) {
+        dirX = 0;
+        dirY = 1;
+      }
 
-    if (IsKeyPressed(KEY_DOWN) && dirY != -1) {
-      dirX = 0;
-      dirY = 1;
-    }
+      if (IsKeyPressed(KEY_LEFT) && dirX != 1) {
+        dirX = -1;
+        dirY = 0;
+      }
 
-    if (IsKeyPressed(KEY_LEFT) && dirX != 1) {
-      dirX = -1;
-      dirY = 0;
-    }
+      if (IsKeyPressed(KEY_RIGHT) && dirX != -1) {
+        dirX = 1;
+        dirY = 0;
+      }
 
-    if (IsKeyPressed(KEY_RIGHT) && dirX != -1) {
-      dirX = 1;
-      dirY = 0;
-    }
+      if (snake[0].x == food.x && snake[0].y == food.y) {
+        snakeLength++;
+        score += 10;
+        food.x = GetRandomValue(0, GRID_WIDTH - 1);
+        food.y = GetRandomValue(0, GRID_HEIGHT - 1);
+      }
 
-    if (snake[0].x == food.x && snake[0].y == food.y) {
-      snakeLength++;
-      score += 10;
-      food.x = GetRandomValue(0, GRID_WIDTH - 1);
-      food.y = GetRandomValue(0, GRID_HEIGHT - 1);
-    }
-
-    if (snake[0].x < 0 || snake[0].x >= GRID_WIDTH || snake[0].y < 0 ||
-        snake[0].y >= GRID_HEIGHT) {
-      gameOver = true;
-    }
-
-    for (int i = 1; i < snakeLength; i++) {
-      if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+      if (snake[0].x < 0 || snake[0].x >= GRID_WIDTH || snake[0].y < 0 ||
+          snake[0].y >= GRID_HEIGHT) {
         gameOver = true;
+      }
+
+      for (int i = 1; i < snakeLength; i++) {
+        if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+          gameOver = true;
+        }
       }
     }
 
     BeginDrawing();
 
     ClearBackground(BLACK);
+
+    if (gameOver) {
+      DrawText("Game Over", 250, 220, 50, RED);
+    }
 
     DrawText("Snake", 350, 280, 30, GREEN);
     DrawRectangle(snake[0].x * CELL_SIZE, snake[0].y * CELL_SIZE, CELL_SIZE,
